@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index.html</title>
+</head>
+<body>
+	<input type="text" id="beforeTrans">
+	<br>
+	<button type="button" onclick="req()">번역</button>
+<!-- 	<button type ="button" onclick="loginWithKakao()">log-in</button><br>
+	<button type ="button" onclick="request()">token</button><br>
+	<button type ="button" onclick="discon()">discon</button><br>
+	<button type ="button" onclick="send()">message</button><br> -->
+	<br>
+	<br>
+	<div id="afterTrans"></div>
+	<br>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script type="text/javascript">
+	
+	Kakao.init('01e910abbfdeec57da2a3d597bd4e1c5');
+	console.log(Kakao.isInitialized());
+/* 	function send(){
+		Kakao.API.request({
+			  url: '/v2/api/talk/memo/default/send',
+			  data: {
+			    template_object: {
+			      object_type: 'feed',
+			      content: {
+			        title: '카카오톡 링크 4.0',
+			        description: '디폴트 템플릿 FEED',
+			        image_url:
+			          'http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+			        link: {
+			          web_url: 'https://developers.kakao.com',
+			          mobile_web_url: 'https://developers.kakao.com',
+			        },
+			      },
+			      social: {
+			        like_count: 100,
+			        comment_count: 200,
+			      },
+			      button_title: '바로 확인',
+			    },
+			  },
+			  success: function(response) {
+			    console.log(response);
+			  },
+			  fail: function(error) {
+			    console.log(error);
+			  },
+			});
+	}
+	function discon() {
+		Kakao.API.request({
+			  url: '/v1/user/unlink',
+			  success: function(response) {
+			    console.log(response);
+			  },
+			  fail: function(error) {
+			    console.log(error);
+			  },
+			});
+	}
+	function loginWithKakao() {
+		    Kakao.Auth.authorize({
+		      redirectUri: 'http://127.0.0.1:80/InterpPK/index.html'
+		    });
+		  } */
+	function req(){
+		axios.get('controller', {
+				params: {
+					data: document.getElementById("beforeTrans").value
+				}
+			})
+			.then(response => {
+				document.getElementById("afterTrans").innerText = response.data;
+			})
+			.catch(function (error) {
+			});
+	}
+/* 	function getQueryString(key) {
+	    var str = location.href;
+	    var index = str.indexOf("?") + 1;
+	    var lastIndex = str.indexOf("#") > -1 ? str.indexOf("#") + 1 : str.length;
+	    if (index == 0) {
+	        return "";
+	    }
+	    str = str.substring(index, lastIndex); 
+	    str = str.split("&");
+	    var rst = "";
+	    for (var i = 0; i < str.length; i++) {
+	        var arr = str[i].split("=");
+	        if (arr.length != 2) {
+	            break;
+	        }
+	        if (arr[0] == key) {
+	            rst = arr[1];
+	            break;
+	        }
+	    }
+	    return rst;
+	}
+	function request(){
+		let code = getQueryString("code");
+		axios.get("https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=2f90f2be64a7e090dc1438aac64a5a4f&redirect_uri=http://127.0.0.1:80/InterpPK/index.html&code="+code, 
+				{
+			})
+			.then(response => {
+				console.log(response.data.access_token);
+				console.log(typeof(response.data.access_token));
+				Kakao.Auth.setAccessToken(response.data.access_token);
+				return response.data.access_token;
+			})
+			.catch(function (error) {
+			});
+	} */
+	</script>
+</body>
+</html>
