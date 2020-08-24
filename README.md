@@ -18,3 +18,9 @@ All these codes are wrote to implement function of real time interpret system on
 # init_commit
 
 I did test to check meaning of REST API and PAPAGO API cause it is my first time with using APIs from NAVER, KAKAO.
+
+Why would you ever kiss me?
+I'm not even half, as pretty
+You gave her your sweater
+It's just polyester, but you like her better
+Wish I were Heather
